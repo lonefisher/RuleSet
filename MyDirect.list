@@ -2,4 +2,10 @@
 #DOMAIN-SUFFIX,1e100.net
 #IP-CIDR,74.125.0.0/16,no-resolve
 DOMAIN-SUFFIX,parsec.app
+DOMAIN,dl-a10b-0481.mypikpak.com
+DOMAIN,dl-a10b-0482.mypikpak.com
+DOMAIN,dl-a10b-0483.mypikpak.com
+DOMAIN,dl-a10b-0484.mypikpak.com
+DOMAIN,dl-a10b-0485.mypikpak.com
+DOMAIN,dl-a10b-0486.mypikpak.com
 IP-CIDR,1.1.1.1/32,no-resolve
