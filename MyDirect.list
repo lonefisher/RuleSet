@@ -1,5 +1,4 @@
 DOMAIN-SUFFIX,parsec.app
 DOMAIN-SUFFIX,kubedown.com
-DOMAIN-SUFFIX,pubsub.plex.tv
 DOMAIN-KEYWORD,plex.direct
 IP-CIDR,1.1.1.1/32,no-resolve
