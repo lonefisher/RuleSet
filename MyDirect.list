@@ -1,3 +1,4 @@
 DOMAIN-SUFFIX,parsec.app
 DOMAIN-SUFFIX,kubedown.com
 DOMAIN-KEYWORD,plex.direct
+IP-CIDR,107.175.93.186/32,no-resolve
