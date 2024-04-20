@@ -1,0 +1,1280 @@
+mixed-port: 7890
+#---------------------------------------------------#
+## 配置文件需要放置在 $HOME/.config/clash/*.yaml
+allow-lan: true
+mode: Rule
+log-level: debug
+external-controller: 127.0.0.1:9090
+ipv6: true
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: true
+  default-nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  fallback:
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+# 节点配置文件统一存放在 ./profiles/proxies/ 目录中
+proxy-providers:
+  # 从链接导入的配置文件
+  ytoo:
+    type: http
+    url: https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D56812%26token%3DWyPFkOF4lIuN%26sip002%3D1
+    interval: 3600 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
+  低倍率专线:
+    type: http
+    url: https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D56812%26token%3DWyPFkOF4lIuN%26sip002%3D1
+    interval: 3600 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+    filter: "日用\s专线"
+  
+  直连节点:
+    type: http
+    url: https://apiurl.v1.mk/sub?target=clash&url=hysteria2%3A%2F%2Faf88adbf%40107.175.93.186%3A55393%2F%3Finsecure%3D1%26sni%3Dwww.bing.com%23Misaka-Hysteria2&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=true&tfo=false&expand=true&scv=true&fdn=false&clash.doh=true&new_name=true
+    interval: 3600 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+    override:
+      skip-cert-verify: true
+      udp: true
+  
+  🇭🇰 香港节点:
+    type: http
+    url: https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D56812%26token%3DWyPFkOF4lIuN%26sip002%3D1
+    interval: 3600 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+    filter: "港|HK|Hong Kong"
+  🇨🇳 台湾节点:
+    type: http
+    url: https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D56812%26token%3DWyPFkOF4lIuN%26sip002%3D1
+    interval: 3600 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+    filter: "台|新北|彰化|TW|Taiwan"
+  🇸🇬 狮城节点:
+    type: http
+    url: https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D56812%26token%3DWyPFkOF4lIuN%26sip002%3D1
+    interval: 3600 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+    filter: "新加坡|坡|狮城|SG|Singapore"
+  🇯🇵 日本节点:
+    type: http
+    url: https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D56812%26token%3DWyPFkOF4lIuN%26sip002%3D1
+    interval: 3600 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+    filter: "日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
+  🇺🇲 美国节点:
+    type: http
+    url: https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D56812%26token%3DWyPFkOF4lIuN%26sip002%3D1
+    interval: 3600 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+    filter: "美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
+  🇰🇷 韩国节点:
+    type: http
+    url: https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D56812%26token%3DWyPFkOF4lIuN%26sip002%3D1
+    interval: 3600 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+    filter: "KR|Korea|KOR|首尔|韩|韓"
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🚀 手动切换
+      - DIRECT
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+  - name: 🚀 手动切换
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - DIRECT
+  - name: 低倍率专线
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 20
+    tolerance: 10
+    use:
+      - 低倍率专线
+    proxies:
+      - DIRECT
+  - name: 低倍率专线负载均衡
+    type: load-balance
+    strategy: round-robin
+    url: http://www.gstatic.com/generate_204
+    interval: 20
+    tolerance: 10
+    use:
+      - 低倍率专线
+    proxies:
+      - DIRECT
+  - name: 直连节点
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 20
+    tolerance: 10
+    use:
+      - 直连节点
+    proxies:
+      - DIRECT
+    name: 直连节点负载均衡
+    type: load-balance
+    strategy: round-robin
+    url: http://www.gstatic.com/generate_204
+    interval: 20
+    tolerance: 10
+    use:
+      - 直连节点
+    proxies:
+      - DIRECT
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 20
+    tolerance: 10
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - DIRECT
+  - name: 🔯 故障转移
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 20
+    tolerance: 10
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - DIRECT
+  - name: 🔮 负载均衡
+    type: load-balance
+    strategy: consistent-hashing
+    url: http://www.gstatic.com/generate_204
+    interval: 20
+    tolerance: 10
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - DIRECT
+  - name: 📲 电报消息
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 💬 OpenAi
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 📹 油管视频
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🎥 流媒体视频
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 📺 巴哈姆特
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 📺 哔哩哔哩
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - 🇨🇳 台湾节点
+      - 🇭🇰 香港节点
+  - name: 🌍 国外媒体
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🌏 国内媒体
+    type: select
+    proxies:
+      - DIRECT
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🚀 手动切换
+  - name: 📢 谷歌FCM
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - 🇺🇲 美国节点
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+  - name: Ⓜ️ 微软Bing
+    type: select
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: Ⓜ️ 微软云盘
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: Ⓜ️ 微软服务
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🍎 苹果服务
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🎮 Epic
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🎮 Origin
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🎮 Sony
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🎮 Steam
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🎮 Nintendo
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🎮 Xbox
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🎶 网易音乐
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
+  - name: 🛑 广告拦截
+    type: select
+    proxies:
+      - REJECT
+      - 🚀 节点选择
+      - DIRECT
+  - name: MyReject
+    type: select
+    proxies:
+      - REJECT
+      - 🚀 节点选择
+      - DIRECT
+  - name: 🍃 应用净化
+    type: select
+    proxies:
+      - REJECT
+      - 🚀 节点选择
+      - DIRECT
+  - name: 🆎 AdBlock
+    type: select
+    proxies:
+      - REJECT
+      - 🚀 节点选择
+      - DIRECT
+  - name: 🛡️ 隐私防护
+    type: select
+    proxies:
+      - REJECT
+      - 🚀 节点选择
+      - DIRECT
+  - name: PikPak
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: PikPakDownload
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: oldfish
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: CloudflareTunnel
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: CloudflareWarp
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: Iwara
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: nhentai
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🇭🇰 香港节点
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 20
+    use:
+      - 🇭🇰 香港节点
+
+  - name: 🇯🇵 日本节点
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - 🇯🇵 日本节点
+  - name: 🇺🇲 美国节点
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 150
+    use:
+      - 🇺🇲 美国节点
+  - name: 🇨🇳 台湾节点
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - 🇨🇳 台湾节点
+  - name: 🇸🇬 狮城节点
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - 🇸🇬 狮城节点
+  - name: 🇰🇷 韩国节点
+    type: fallback
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - 🇰🇷 韩国节点
+  - name: 🎥 奈飞节点
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
+
+# clash-rules项目提供的规则集
+# 规则文件统一存放在 ./profiles/rules/ 目录中
+rule-providers:
+  AbemaTV:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/AbemaTV.yaml"
+    path: ./ACL4SSR/AbemaTV.yaml
+    interval: 86400
+
+  Adobe:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Adobe.yaml"
+    path: ./ACL4SSR/Adobe.yaml
+    interval: 86400
+
+  Amazon:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Amazon.yaml"
+    path: ./ACL4SSR/Amazon.yaml
+    interval: 86400
+
+  AmazonIp:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/AmazonIp.yaml"
+    path: ./ACL4SSR/AmazonIp.yaml
+    interval: 86400
+  
+  Apple:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Apple.yaml"
+    path: ./ACL4SSR/Apple.yaml
+    interval: 86400
+
+  Bahamut:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Bahamut.yaml"
+    path: ./ACL4SSR/Bahamut.yaml
+    interval: 86400
+
+  Bilibili:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Bilibili.yaml"
+    path: ./ACL4SSR/Bilibili.yaml
+    interval: 86400
+
+  BilibiliHMT:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/BilibiliHMT.yaml"
+    path: ./ACL4SSR/BilibiliHMT.yaml
+    interval: 86400
+
+  Blizzard:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Blizzard.yaml"
+    path: ./ACL4SSR/Blizzard.yaml
+    interval: 86400
+
+  Developer:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Developer.yaml"
+    path: ./ACL4SSR/Developer.yaml
+    interval: 86400
+
+  DisneyPlus:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/DisneyPlus.yaml"
+    path: ./ACL4SSR/DisneyPlus.yaml
+    interval: 86400
+
+  EHGallery:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/EHGallery.yaml"
+    path: ./ACL4SSR/EHGallery.yaml
+    interval: 86400
+
+  Epic:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Epic.yaml"
+    path: ./ACL4SSR/Epic.yaml
+    interval: 86400
+   
+  Google:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Google.yaml"
+    path: ./ACL4SSR/Google.yaml
+    interval: 86400
+      
+  GoogleCN:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/GoogleCN.yaml"
+    path: ./ACL4SSR/GoogleCN.yaml
+    interval: 86400
+    
+  GoogleFCM:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/GoogleFCM.yaml"
+    path: ./ACL4SSR/GoogleFCM.yaml
+    interval: 86400
+    
+  HBO:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/HBO.yaml"
+    path: ./ACL4SSR/HBO.yaml
+    interval: 86400
+    
+  Microsoft:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Microsoft.yaml"
+    path: ./ACL4SSR/Microsoft.yaml
+    interval: 86400
+    
+  NetEaseMusic:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/NetEaseMusic.yaml"
+    path: ./ACL4SSR/NetEaseMusic.yaml
+    interval: 86400
+    
+  Netflix:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Netflix.yaml"
+    path: ./ACL4SSR/Netflix.yaml
+    interval: 86400
+    
+  OneDrive:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/OneDrive.yaml"
+    path: ./ACL4SSR/OneDrive.yaml
+    interval: 86400
+    
+  Porn:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Porn.yaml"
+    path: ./ACL4SSR/Porn.yaml
+    interval: 86400
+    
+  Scholar:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Scholar.yaml"
+    path: ./ACL4SSR/Scholar.yaml
+    interval: 86400
+    
+  Sony:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Sony.yaml"
+    path: ./ACL4SSR/Sony.yaml
+    interval: 86400
+    
+  Spotify:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Spotify.yaml"
+    path: ./ACL4SSR/Spotify.yaml
+    interval: 86400
+    
+  Steam:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Steam.yaml"
+    path: ./ACL4SSR/Steam.yaml
+    interval: 86400
+    
+  SteamCN:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/SteamCN.yaml"
+    path: ./ACL4SSR/SteamCN.yaml
+    interval: 86400
+    
+  Telegram:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Telegram.yaml"
+    path: ./ACL4SSR/Telegram.yaml
+    interval: 86400
+    
+  Xbox:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Xbox.yaml"
+    path: ./ACL4SSR/Xbox.yaml
+    interval: 86400
+
+  YouTube:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/YouTube.yaml"
+    path: ./ACL4SSR/YouTube.yaml
+    interval: 86400
+
+  BanAD:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanAD.yaml"
+    path: ./ACL4SSR/BanAD.yaml
+    interval: 86400
+    
+  BanEasyList:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanEasyList.yaml"
+    path: ./ACL4SSR/BanEasyList.yaml
+    interval: 86400
+    
+  BanEasyListChina:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanEasyListChina.yaml"
+    path: ./ACL4SSR/BanEasyListChina.yaml
+    interval: 86400
+    
+  BanEasyPrivacy:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanEasyPrivacy.yaml"
+    path: ./ACL4SSR/BanEasyPrivacy.yaml
+    interval: 86400
+    
+  BanProgramAD:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanProgramAD.yaml"
+    path: ./ACL4SSR/BanProgramAD.yaml
+    interval: 86400
+    
+  ChinaCompanyIp:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaCompanyIp.yaml"
+    path: ./ACL4SSR/ChinaCompanyIp.yaml
+    interval: 86400
+    
+  ChinaDomain:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaDomain.yaml"
+    path: ./ACL4SSR/ChinaDomain.yaml
+    interval: 86400
+    
+  ChinaIp:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaIp.yaml"
+    path: ./ACL4SSR/ChinaIp.yaml
+    interval: 86400
+    
+  ChinaMedia:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaMedia.yaml"
+    path: ./ACL4SSR/ChinaMedia.yaml
+    interval: 86400
+ 
+  Download:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Download.yaml"
+    path: ./ACL4SSR/Download.yaml
+    interval: 86400
+           
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/LocalAreaNetwork.yaml"
+    path: ./ACL4SSR/LocalAreaNetwork.yaml
+    interval: 86400
+    
+  ProxyGFWlist:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyGFWlist.yaml"
+    path: ./ACL4SSR/ProxyGFWlist.yaml
+    interval: 86400
+    
+  ProxyMedia:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyMedia.yaml"
+    path: ./ACL4SSR/ProxyMedia.yaml
+    interval: 86400
+    
+  UnBan:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/UnBan.yaml"
+    path: ./ACL4SSR/UnBan.yaml
+    interval: 86400
+  
+  PikPak:
+    type: http
+    behavior: classical
+    url: "https://github.com/lonefisher/RuleSet/raw/main/PikPak.list"
+    path: ./MyRule/PikPak.yaml
+    interval: 86400
+
+rules:
+  # 广告
+  - RULE-SET,BanAD,REJECT
+  - RULE-SET,BanEasyList,REJECT
+  - RULE-SET,BanEasyListChina,REJECT
+  - RULE-SET,BanEasyPrivacy,REJECT
+  - RULE-SET,BanProgramAD,REJECT
+  # 国内
+  - RULE-SET,ChinaCompanyIp,DIRECT
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaIp,DIRECT
+  # 本地
+  - RULE-SET,Download,DIRECT
+  - RULE-SET,LocalAreaNetwork,DIRECT
+  # GFW
+  - RULE-SET,ProxyGFWlist,🚀 节点选择
+  # 白名单
+  - RULE-SET,UnBan,DIRECT
+  # 媒体
+  - RULE-SET,ChinaMedia,DIRECT
+  - RULE-SET,ProxyMedia,🌍 国外媒体
+  - RULE-SET,AbemaTV,🎥 流媒体视频
+  - RULE-SET,Bilibili,DIRECT
+  - RULE-SET,BilibiliHMT,🚀 节点选择
+  - RULE-SET,DisneyPlus,🎥 流媒体视频
+  - RULE-SET,HBO,🎥 流媒体视频
+  - RULE-SET,NetEaseMusic,DIRECT
+  - RULE-SET,Netflix,🎥 流媒体视频
+  - RULE-SET,Sony,🎮 Sony
+  - RULE-SET,Spotify,🚀 节点选择
+  - RULE-SET,YouTube,📹 油管视频
+  # 购物
+  - RULE-SET,Amazon,🚀 节点选择
+  - RULE-SET,AmazonIp,🚀 节点选择
+  - RULE-SET,Apple,🍎 苹果服务
+  # 游戏
+  - RULE-SET,Bahamut,📺 巴哈姆特
+  - RULE-SET,Blizzard,DIRECT
+  - RULE-SET,Epic,🎮 Epic
+  - RULE-SET,Steam,🎮 Steam
+  - RULE-SET,SteamCN,DIRECT
+  - RULE-SET,Xbox,🎮 Xbox
+  # 开发
+  - RULE-SET,Developer,🚀 节点选择
+  # 18
+  - RULE-SET,EHGallery,🚀 节点选择
+  - RULE-SET,Porn,🚀 节点选择
+  # 学术
+  - RULE-SET,Scholar,🚀 节点选择
+  # 其他
+  - RULE-SET,Adobe,🚀 节点选择
+  - RULE-SET,Google,🚀 节点选择
+  - RULE-SET,GoogleCN,DIRECT
+  - RULE-SET,GoogleFCM,📢 谷歌FCM
+  - RULE-SET,Microsoft,Ⓜ️ 微软服务
+  - RULE-SET,OneDrive,Ⓜ️ 微软云盘
+  - RULE-SET,Telegram,📲 电报消息
+  # 必须
+  - MATCH,🚀 节点选择

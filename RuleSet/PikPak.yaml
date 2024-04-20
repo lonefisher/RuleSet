@@ -1,0 +1,13 @@
+payload:
+  - DOMAIN-SUFFIX,mypikpak.com
+  - DOMAIN,mypikpak.net
+  - DOMAIN,pikpak.me
+  - DOMAIN,pikpakdrive.com
+  - DOMAIN,api-drive.mypikpak.com
+  - DOMAIN,api-drive.mypikpak.net
+  - DOMAIN,api-drive.pikpak.me
+  - DOMAIN,api-drive.pikpakdrive.com
+  - DOMAIN,access.mypikpak.com
+  - DOMAIN,access.mypikpak.net
+  - DOMAIN,access.pikpak.me
+  - DOMAIN,access.pikpakdrive.com
