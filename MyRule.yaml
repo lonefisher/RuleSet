@@ -811,6 +811,29 @@ proxy-groups:
       - 🇰🇷 韩国节点
       - 🚀 手动切换
       - DIRECT
+  - name: exhentai
+    type: select
+    use:
+      - ytoo
+      - 低倍率专线
+      - 直连节点
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 低倍率专线
+      - 低倍率专线负载均衡
+      - 直连节点
+      - 直连节点负载均衡
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬 狮城节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇰🇷 韩国节点
+      - 🚀 手动切换
+      - DIRECT
   - name: 🐟 漏网之鱼
     type: select
     use:
@@ -1215,9 +1238,67 @@ rule-providers:
   PikPak:
     type: http
     behavior: classical
-    url: "https://github.com/lonefisher/RuleSet/raw/main/PikPak.list"
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPak.yaml"
     path: ./MyRule/PikPak.yaml
     interval: 86400
+  
+  PikPakDownload:
+    type: http
+    behavior: domian
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPakDownload.yaml"
+    path: ./MyRule/PikPakDownload.yaml
+    interval: 86400
+
+  CloudflareTunnel:
+    type: http
+    behavior: classical
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/CloudflareTunnel.yaml"
+    path: ./MyRule/CloudflareTunnel.yaml
+    interval: 86400
+
+  CloudflareWarp:
+    type: http
+    behavior: classical
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/CloudflareWarp.yaml"
+    path: ./MyRule/CloudflareWarp.yaml
+    interval: 86400
+  
+  Iwara:
+    type: http
+    behavior: classical
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/Iwara.yaml"
+    path: ./MyRule/Iwara.yaml
+    interval: 86400
+
+  MyDirect:
+    type: http
+    behavior: classical
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/MyDirect.yaml"
+    path: ./MyRule/MyDirect.yaml
+    interval: 86400
+    
+  MyReject:
+    type: http
+    behavior: classical
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/MyReject.yaml"
+    path: ./MyRule/MyReject.yaml
+    interval: 86400
+
+  nhentai:
+    type: http
+    behavior: classical
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/nhentai.yaml"
+    path: ./MyRule/nhentai.yaml
+    interval: 86400
+  
+  oldfish:
+    type: http
+    behavior: classical
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/oldfish.yaml"
+    path: ./MyRule/oldfish.yaml
+    interval: 86400
+
+ 
 
 rules:
   # 广告
@@ -1237,6 +1318,16 @@ rules:
   - RULE-SET,ProxyGFWlist,🚀 节点选择
   # 白名单
   - RULE-SET,UnBan,DIRECT
+  # 自定义
+  - RULE-SET,PikPakDownload,PikPakDownload
+  - RULE-SET,PikPak,PikPak
+  - RULE-SET,CloudflareTunnel,CloudflareTunnel
+  - RULE-SET,CloudflareWarp,CloudflareWarp
+  - RULE-SET,MyDirect,DIRECT
+  - RULE-SET,MyReject,REJECT
+  - RULE-SET,nhentai,nhentai
+  - RULE-SET,oldfish,oldfish
+  - RULE-SET,EHGallery,exhentai
   # 媒体
   - RULE-SET,ChinaMedia,DIRECT
   - RULE-SET,ProxyMedia,🌍 国外媒体
@@ -1264,7 +1355,6 @@ rules:
   # 开发
   - RULE-SET,Developer,🚀 节点选择
   # 18
-  - RULE-SET,EHGallery,🚀 节点选择
   - RULE-SET,Porn,🚀 节点选择
   # 学术
   - RULE-SET,Scholar,🚀 节点选择
