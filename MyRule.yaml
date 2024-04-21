@@ -13,11 +13,11 @@ proxy-providers:
     <<: *p
     url: "https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D56812%26token%3DWyPFkOF4lIuN%26sip002%3D1"     
 
-  低倍率专线:
+  low_rate:
     <<: *p
     url: "https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D56812%26token%3DWyPFkOF4lIuN%26sip002%3D1"
   
-  直连节点:
+  direct_link:
     <<: *p
     url: "https://apiurl.v1.mk/sub?target=clash&url=hysteria2%3A%2F%2Faf88adbf%40107.175.93.186%3A55393%2F%3Finsecure%3D1%26sni%3Dwww.bing.com%23Misaka-Hysteria2&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=true&tfo=false&expand=true&scv=true&fdn=false&clash.doh=true&new_name=true"
 
