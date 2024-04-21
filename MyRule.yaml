@@ -1,9 +1,9 @@
 ######### 锚点 start #######
 # 策略组相关
-pr: &pr {type: select, proxies: [默认,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择,直连]}
+pr: &pr {type: select, proxies: [默认,低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择,直连]}
 
 #这里是订阅更新和延迟测试相关的
-p: &p {type: http, interval: 3600, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 300}}
+p: &p {type: http, interval: 3600, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 30}}
 
 ######### 锚点 end #######
 
@@ -19,7 +19,7 @@ proxy-providers:
   
   直连节点:
     <<: *p
-    url: "https://apiurl.v1.mk/sub?target=clash&url=hysteria2%3A%2F%2Faf88adbf%40107.175.93.186%3A55393%2F%3Finsecure%3D1%26sni%3Dwww.bing.com%23Misaka-Hysteria2&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=true&tfo=false&expand=true&scv=true&fdn=false&clash.doh=true&new_name=true"
+    url: "https://apiurl.v1.mk/sub?target=clash&url=hysteria2%3A%2F%2Faf88adbf%40107.175.93.186%3A55393%2F%3Finsecure%3D1%26sni%3Dwww.bing.com%23ColoCrossing%E6%B0%B4%E7%89%9B%E5%9F%8E&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
 
 ipv6: true
 allow-lan: true
@@ -86,8 +86,8 @@ proxies:
   type: direct
   udp: true
 proxy-groups:
-  - {name: 默认, type: select, proxies: [自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点]}
-  - {name: dns, type: select, proxies: [自动选择, 默认, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点]}
+  - {name: 默认, type: select, proxies: [自动选择, 直连, 低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点]}
+  - {name: dns, type: select, proxies: [自动选择, 默认, 低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点]}
   - {name: Google, <<: *pr}
   - {name: Telegram, <<: *pr}
   - {name: Twitter, <<: *pr}
@@ -104,12 +104,10 @@ proxy-groups:
   - {name: PikPakDownload, <<: *pr}
   - {name: CloudflareTunnel, <<: *pr}
   - {name: CloudflareWarp, <<: *pr}
-  - {name: Iwara, <<: *pr}
-  - {name: MyDirect, <<: *pr}
-  - {name: MyReject, <<: *pr}
-  - {name: nhentai, <<: *pr}
+  - {name: Iwara, type: select , include-all-providers: true}
+  - {name: nhentai, type: select , include-all-providers: true}
   - {name: oldfish, <<: *pr}
-  - {name: 国内, type: select, proxies: [直连, 默认, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点, 自动选择]}
+  - {name: 国内, type: select, proxies: [直连, 默认, 低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点, 自动选择]}
   - {name: 其他, <<: *pr}
 
 #分隔,下面是地区分组
@@ -121,6 +119,11 @@ proxy-groups:
   - {name: 其它地区, type: select , include-all-providers: true, filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"}
   - {name: 全部节点, type: select , include-all-providers: true}
   - {name: 自动选择, type: url-test, include-all-providers: true, tolerance: 10}
+  - {name: 低倍率专线, type: fallback , include-all-providers: true, filter: "(?i)(日用 专线)"}
+  - {name: 低倍率专线负载均衡, type: load-balance ,strategy: round-robin , include-all-providers: true, filter: "(?i)(日用 专线)"}
+  - {name: 直连节点, type: select , include-all-providers: true, filter: "(?i)(水牛城)"}
+  - {name: 直连节点负载均衡, type: load-balance ,strategy: round-robin , include-all-providers: true, filter: "(?i)(水牛城)"}
+
 
 rules:
   - GEOIP,lan,直连,no-resolve
@@ -148,8 +151,8 @@ rules:
   - RULE-SET,CloudflareTunnel_classical,CloudflareTunnel
   - RULE-SET,CloudflareWarp_classical,CloudflareWarp
   - RULE-SET,Iwara_classical,Iwara
-  - RULE-SET,MyDirect_classical,MyDirect
-  - RULE-SET,MyReject_classical,MyReject
+  - RULE-SET,MyDirect_classical,DIRECT
+  - RULE-SET,MyReject_classical,REJECT
   - RULE-SET,nhentai_classical,nhentai
   - RULE-SET,oldfish_classical,oldfish
   - RULE-SET,cn_ip,国内
