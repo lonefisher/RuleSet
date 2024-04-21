@@ -19,8 +19,8 @@ proxy-providers:
   
   直连节点:
     <<: *p
-    url: "https://apiurl.v1.mk/sub?target=clash&url=hysteria2%3A%2F%2Faf88adbf%40107.175.93.186%3A55393%2F%3Finsecure%3D1%26sni%3Dwww.bing.com%23ColoCrossing%E6%B0%B4%E7%89%9B%E5%9F%8E&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
-
+    url: "https://apiurl.v1.mk/sub?target=clash&url=hysteria2%3A%2F%2Faf88adbf%40107.175.93.186%3A55393%2F%3Finsecure%3D1%26sni%3Dwww.bing.com%23ColoCrossing%E6%B0%B4%E7%89%9B%E5%9F%8E&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=true&tfo=false&expand=true&scv=true&fdn=false&new_name=true"
+    
 ipv6: true
 allow-lan: true
 mixed-port: 7890
