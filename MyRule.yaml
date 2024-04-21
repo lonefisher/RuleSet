@@ -205,6 +205,9 @@ rule-providers:
   geolocation-!cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
+  PikPakDownload_classical:
+    <<: *domain
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPakDownload.yaml"
 
   cn_ip:
     <<: *ip
@@ -225,9 +228,6 @@ rule-providers:
   PikPak_classical:
     <<: *classical
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPak.yaml"
-  PikPakDownload_classical:
-    <<: *classical
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPakDownload.yaml"
   CloudflareTunnel_classical:
     <<: *classical
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/CloudflareTunnel.yaml"
