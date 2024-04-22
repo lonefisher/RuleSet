@@ -159,7 +159,7 @@ rules:
   - RULE-SET,telegram_ip,Telegram
   - RULE-SET,twitter_ip,Twitter
   - RULE-SET,PikPak_classical,PikPak
-  - RULE-SET,PikPakDownload_classical,PikPakDownload
+  - RULE-SET,PikPakDownload_domain,PikPakDownload
   - RULE-SET,CloudflareTunnel_classical,CloudflareTunnel
   - RULE-SET,CloudflareWarp_classical,CloudflareWarp
   - RULE-SET,Iwara_classical,Iwara
@@ -220,7 +220,7 @@ rule-providers:
   geolocation-!cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
-  PikPakDownload_classical:
+  PikPakDownload_domain:
     <<: *domain
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPakDownload.yaml"
 
