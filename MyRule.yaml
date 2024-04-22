@@ -149,6 +149,17 @@ proxy-groups:
 
 rules:
   - GEOIP,lan,直连,no-resolve
+
+  - RULE-SET,PikPakDownload_domain,PikPakDownload
+  - RULE-SET,PikPak_classical,PikPak
+  - RULE-SET,CloudflareTunnel_classical,CloudflareTunnel
+  - RULE-SET,CloudflareWarp_classical,CloudflareWarp
+  - RULE-SET,Iwara_classical,Iwara
+  - RULE-SET,MyDirect_classical,DIRECT
+  - RULE-SET,MyReject_classical,REJECT
+  - RULE-SET,nhentai_classical,nhentai
+  - RULE-SET,oldfish_classical,oldfish
+
   - RULE-SET,biliintl_domain,哔哩东南亚
   - RULE-SET,ehentai_domain,ehentai
   - RULE-SET,github_domain,Github
@@ -168,15 +179,6 @@ rules:
   - RULE-SET,netflix_ip,NETFLIX
   - RULE-SET,telegram_ip,Telegram
   - RULE-SET,twitter_ip,Twitter
-  - RULE-SET,PikPak_classical,PikPak
-  - RULE-SET,PikPakDownload_domain,PikPakDownload
-  - RULE-SET,CloudflareTunnel_classical,CloudflareTunnel
-  - RULE-SET,CloudflareWarp_classical,CloudflareWarp
-  - RULE-SET,Iwara_classical,Iwara
-  - RULE-SET,MyDirect_classical,DIRECT
-  - RULE-SET,MyReject_classical,REJECT
-  - RULE-SET,nhentai_classical,nhentai
-  - RULE-SET,oldfish_classical,oldfish
   - RULE-SET,cn_ip,国内
   - MATCH,其他
 
