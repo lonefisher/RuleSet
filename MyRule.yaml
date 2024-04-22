@@ -1,6 +1,7 @@
 ######### 锚点 start #######
 # 策略组相关
 pr: &pr {type: select, proxies: [默认,低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择,直连]}
+prd: &prd {type: select, proxies: [直连,默认,低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,香港,台湾,日本,新加坡,美国,其它地区,全部节点,自动选择]}
 
 #这里是订阅更新和延迟测试相关的
 p: &p {type: http, interval: 3600, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 30}}
@@ -92,8 +93,8 @@ proxy-groups:
   - {name: Telegram, <<: *pr}
   - {name: Twitter, <<: *pr}
   - {name: Pixiv, <<: *pr}
-  - {name: ehentai, <<: *pr}
-  - {name: 哔哩哔哩, <<: *pr}
+  - {name: ehentai, type: select , include-all-providers: true}
+  - {name: 哔哩哔哩, <<: *prd}
   - {name: 哔哩东南亚, <<: *pr}
   - {name: 巴哈姆特, <<: *pr}
   - {name: YouTube, <<: *pr}
@@ -103,11 +104,11 @@ proxy-groups:
   - {name: PikPak, <<: *pr}
   - {name: PikPakDownload, <<: *pr}
   - {name: CloudflareTunnel, <<: *pr}
-  - {name: CloudflareWarp, <<: *pr}
+  - {name: CloudflareWarp, <<: *prd}
   - {name: Iwara, type: select , include-all-providers: true}
   - {name: nhentai, type: select , include-all-providers: true}
-  - {name: oldfish, <<: *pr}
-  - {name: 国内, type: select, proxies: [直连, 默认, 低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点, 自动选择]}
+  - {name: oldfish, <<: *prd}
+  - {name: 国内, <<: *prd}
   - {name: 其他, <<: *pr}
 
 #分隔,下面是地区分组
@@ -119,11 +120,22 @@ proxy-groups:
   - {name: 其它地区, type: select , include-all-providers: true, filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"}
   - {name: 全部节点, type: select , include-all-providers: true}
   - {name: 自动选择, type: url-test, include-all-providers: true, tolerance: 10}
-  - {name: 低倍率专线, type: fallback , include-all-providers: true, filter: "(?i)(日用 专线)"}
-  - {name: 低倍率专线负载均衡, type: load-balance ,strategy: round-robin , include-all-providers: true, filter: "(?i)(日用 专线)"}
+ # - {name: 低倍率专线, type: fallback , include-all-providers: true, filter: "(?i)(日用 专线)"}
+ # - {name: 低倍率专线负载均衡, type: load-balance ,strategy: round-robin , include-all-providers: true, filter: "(?i)(日用 专线)"}
   - {name: 直连节点, type: select , include-all-providers: true, filter: "(?i)(水牛城)"}
   - {name: 直连节点负载均衡, type: load-balance ,strategy: round-robin , include-all-providers: true, filter: "(?i)(水牛城)"}
-
+  - name: "低倍率专线"
+    type: fallback
+    use:
+    - ytoo
+    filter: "(?i)(日用 专线)"
+    
+  - name: "低倍率专线负载均衡"
+    type: load-balance
+    strategy: round-robin
+    use:
+    - ytoo
+    filter: "(?i)(日用 专线)"
 
 rules:
   - GEOIP,lan,直连,no-resolve
