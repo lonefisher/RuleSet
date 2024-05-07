@@ -14,10 +14,6 @@ proxy-providers:
     <<: *p
     url: "https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D59802%26token%3DYuov0quWLKPE%26sip002%3D1"     
 
-  低倍率专线:
-    <<: *p
-    url: "https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D59802%26token%3DYuov0quWLKPE%26sip002%3D1"
-  
   直连节点:
     <<: *p
     url: "https://apiurl.v1.mk/sub?target=clash&url=hysteria2%3A%2F%2Faf88adbf%40107.175.93.186%3A55393%2F%3Finsecure%3D1%26sni%3Dwww.bing.com%23ColoCrossing%E6%B0%B4%E7%89%9B%E5%9F%8E&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=true&tfo=false&expand=true&scv=true&fdn=false&new_name=true"
@@ -124,8 +120,6 @@ proxy-groups:
   - {name: 其它地区, type: select , include-all-providers: true, filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"}
   - {name: 全部节点, type: select , include-all-providers: true}
   - {name: 自动选择, type: url-test, include-all-providers: true, tolerance: 10}
- # - {name: 低倍率专线, type: fallback , include-all-providers: true, filter: "(?i)(日用 专线)"}
- # - {name: 低倍率专线负载均衡, type: load-balance ,strategy: round-robin , include-all-providers: true, filter: "(?i)(日用 专线)"}
   - {name: 直连节点, type: select , include-all-providers: true, filter: "(?i)(水牛城)"}
   - {name: 直连节点负载均衡, type: load-balance ,strategy: round-robin , include-all-providers: true, filter: "(?i)(水牛城)"}
   - name: "低倍率专线"
