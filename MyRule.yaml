@@ -93,7 +93,7 @@ proxy-groups:
   - {name: Telegram, <<: *pr}
   - {name: Twitter, <<: *pr}
   - {name: Pixiv, <<: *pr}
-  - {name: ehentai, type: select ,include-all-proxies: true, include-all-providers: true}
+  - {name: ehentai, type: select ,include-all: true}
   - {name: 哔哩哔哩, <<: *prd}
   - {name: 哔哩东南亚, <<: *pr}
   - {name: 巴哈姆特, <<: *pr}
@@ -110,6 +110,7 @@ proxy-groups:
   - {name: oldfish, <<: *prd}
   - {name: 国内, <<: *prd}
   - {name: 其他, <<: *pr}
+
 
 #分隔,下面是地区分组
   - {name: 香港, type: select , include-all-providers: true, filter: "(?i)港|hk|hongkong|hong kong"}
