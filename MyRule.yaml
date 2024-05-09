@@ -113,8 +113,7 @@ proxy-groups:
   - name: "链式代理"
     type: relay
     proxies:
-      - 日用 专线 美国 [0.2]
-      - ColoCrossing水牛城
+      - 直连节点
 
 
 #分隔,下面是地区分组
