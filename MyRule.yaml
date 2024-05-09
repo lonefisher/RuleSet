@@ -93,7 +93,7 @@ proxy-groups:
   - {name: Telegram, <<: *pr}
   - {name: Twitter, <<: *pr}
   - {name: Pixiv, <<: *pr}
-  - {name: ehentai, type: select, proxies: [低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,EDtunnel负载均衡,自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点],include-all-providers: true}
+  - {name: ehentai, type: select, proxies: [低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,链式代理,EDtunnel负载均衡,自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点],include-all-providers: true}
   - {name: 哔哩哔哩, <<: *prd}
   - {name: 哔哩东南亚, <<: *pr}
   - {name: 巴哈姆特, <<: *pr}
@@ -105,16 +105,16 @@ proxy-groups:
   - {name: PikPakDownload, <<: *pr}
   - {name: CloudflareTunnel, <<: *pr}
   - {name: CloudflareWarp, <<: *prd}
-  - {name: Iwara, type: select, proxies: [低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,EDtunnel负载均衡,自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点],include-all-providers: true}
-  - {name: nhentai, type: select, proxies: [低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,EDtunnel负载均衡,自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点],include-all-providers: true}
+  - {name: Iwara, type: select, proxies: [低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,链式代理,EDtunnel负载均衡,自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点],include-all-providers: true}
+  - {name: nhentai, type: select, proxies: [低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,链式代理,EDtunnel负载均衡,自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点],include-all-providers: true}
   - {name: oldfish, <<: *prd}
   - {name: 国内, <<: *prd}
   - {name: 其他, <<: *pr}
   - name: "链式代理"
     type: relay
     proxies:
-      - 美国
-      - 直连节点
+      - 日用 专线 美国 [0.2]
+      - ColoCrossing水牛城
 
 
 #分隔,下面是地区分组
