@@ -75,13 +75,7 @@ dns:
     - https://dns.alidns.com/dns-query
   proxy-server-nameserver:
     - https://doh.pub/dns-query
-  nameserver-policy:
-    "rule-set:cn_domain,private":
-      - https://doh.pub/dns-query
-      - https://dns.alidns.com/dns-query
-    "rule-set:geolocation-!cn":
-      - 'https://dns.cloudflare.com/dns-query#dns'
-      - 'https://dns.google/dns-query#dns'
+
 proxies:
 - name: "直连"
   type: direct
