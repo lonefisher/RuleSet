@@ -88,19 +88,13 @@ proxies:
   udp: true
 proxy-groups:
   - {name: 默认, type: select, proxies: [低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,EDtunnel负载均衡,自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点]}
-  - {name: dns, type: select, proxies: [默认,低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,EDtunnel负载均衡,自动选择, 默认,香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点]}
   - {name: Google, <<: *pr}
   - {name: Telegram, <<: *pr}
-  - {name: Twitter, <<: *pr}
-  - {name: Pixiv, <<: *pr}
   - {name: ehentai, type: select, proxies: [默认,低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,EDtunnel负载均衡,自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点],include-all-providers: true}
   - {name: 哔哩哔哩, <<: *prd}
-  - {name: 哔哩东南亚, <<: *pr}
-  - {name: 巴哈姆特, <<: *pr}
   - {name: YouTube, <<: *pr}
   - {name: NETFLIX, <<: *pr}
   - {name: Spotify, <<: *pr}
-  - {name: Github, <<: *pr}
   - {name: PikPak, <<: *pr}
   - {name: PikPakDownload, <<: *pr}
   - {name: CloudflareTunnel, <<: *pr}
@@ -145,7 +139,7 @@ proxy-groups:
 
 rules:
   - GEOIP,lan,直连,no-resolve
-
+  #自定义
   - RULE-SET,PikPakDownload_domain,PikPakDownload
   - RULE-SET,PikPak_classical,PikPak
   - RULE-SET,CloudflareTunnel_classical,CloudflareTunnel
@@ -155,98 +149,203 @@ rules:
   - RULE-SET,MyReject_classical,REJECT
   - RULE-SET,nhentai_classical,nhentai
   - RULE-SET,oldfish_classical,oldfish
-
-  - RULE-SET,biliintl_domain,哔哩东南亚
-  - RULE-SET,ehentai_domain,ehentai
-  - RULE-SET,github_domain,Github
-  - RULE-SET,twitter_domain,Twitter
-  - RULE-SET,youtube_domain,YouTube
-  - RULE-SET,google_domain,Google
-  - RULE-SET,telegram_domain,Telegram
-  - RULE-SET,netflix_domain,NETFLIX
-  - RULE-SET,bilibili_domain,哔哩哔哩
-  - RULE-SET,bahamut_domain,巴哈姆特
-  - RULE-SET,spotify_domain,Spotify
-  - RULE-SET,pixiv_domain,Pixiv
-  - RULE-SET,cn_domain,国内
-  - RULE-SET,geolocation-!cn,其他
-
-  - RULE-SET,google_ip,Google
-  - RULE-SET,netflix_ip,NETFLIX
-  - RULE-SET,telegram_ip,Telegram
-  - RULE-SET,twitter_ip,Twitter
-  - RULE-SET,cn_ip,国内
-  - MATCH,其他
+  # 广告
+  - RULE-SET,BanAD,REJECT
+  - RULE-SET,BanEasyList,REJECT
+  - RULE-SET,BanEasyListChina,REJECT
+  - RULE-SET,BanEasyPrivacy,REJECT
+  - RULE-SET,BanProgramAD,REJECT
+  # 国内
+  - RULE-SET,ChinaCompanyIp,DIRECT
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaIp,DIRECT
+  # 本地
+  - RULE-SET,Download,DIRECT
+  - RULE-SET,LocalAreaNetwork,DIRECT
+  # GFW
+  - RULE-SET,ProxyGFWlist,默认
+  # 白名单
+  - RULE-SET,UnBan,DIRECT
+  # 媒体
+  - RULE-SET,ChinaMedia,DIRECT
+  - RULE-SET,ProxyMedia,默认
+  - RULE-SET,AbemaTV,默认
+  - RULE-SET,Bilibili,哔哩哔哩
+  - RULE-SET,BilibiliHMT,默认
+  - RULE-SET,DisneyPlus,默认
+  - RULE-SET,HBO,默认
+  - RULE-SET,NetEaseMusic,DIRECT
+  - RULE-SET,Netflix,NETFLIX
+  - RULE-SET,Sony,默认
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,YouTube,YouTube
+  # 购物
+  - RULE-SET,Amazon,默认
+  - RULE-SET,AmazonIp,默认
+  - RULE-SET,Apple,默认
+  # 游戏
+  - RULE-SET,Bahamut,默认
+  - RULE-SET,Blizzard,DIRECT
+  - RULE-SET,Epic,默认
+  - RULE-SET,Steam,默认
+  - RULE-SET,SteamCN,DIRECT
+  - RULE-SET,Xbox,默认
+  # 开发
+  - RULE-SET,Developer,默认
+  # 18
+  - RULE-SET,EHGallery,ehentai
+  - RULE-SET,Porn,默认
+  # 学术
+  - RULE-SET,Scholar,默认
+  # 其他
+  - RULE-SET,Adobe,默认
+  - RULE-SET,Google,Google
+  - RULE-SET,GoogleCN,DIRECT
+  - RULE-SET,GoogleFCM,Google
+  - RULE-SET,Microsoft,默认
+  - RULE-SET,OneDrive,默认
+  - RULE-SET,Telegram,Telegram
+  # 必须
+  - MATCH,默认
 
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: yaml}
   classical: &classical {type: http, interval: 86400, behavior: classical, format: yaml}
 rule-providers:
-  private:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.yaml"
-  cn_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.yaml"
-  biliintl_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/biliintl.yaml"
-  ehentai_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.yaml"
-  github_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.yaml"
-  twitter_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.yaml"
-  youtube_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.yaml"
-  google_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.yaml"
-  telegram_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.yaml"
-  netflix_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.yaml"
-  bilibili_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.yaml"
-  bahamut_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bahamut.yaml"
-  spotify_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.yaml"
-  pixiv_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.yaml"
-  geolocation-!cn:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
-  PikPakDownload_domain:
-    <<: *domain
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPakDownload.yaml"
+  AbemaTV:
+  <<: *classical
+  url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/AbemaTV.yaml"
+  Adobe:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Adobe.yaml"
+  Amazon:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Amazon.yaml"
+  AmazonIp:
+    <<: *ipcidr
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/AmazonIp.yaml"
+  Apple:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Apple.yaml"
+  Bahamut:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Bahamut.yaml"
+  Bilibili:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Bilibili.yaml"
+  BilibiliHMT:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/BilibiliHMT.yaml"
+  Blizzard:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Blizzard.yaml"
+  Developer:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Developer.yaml"
+  DisneyPlus:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/DisneyPlus.yaml"
+  EHGallery:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/EHGallery.yaml"
+  Epic:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Epic.yaml"
+  Google:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Google.yaml"
+  GoogleCN:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/GoogleCN.yaml"
+  GoogleFCM:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/GoogleFCM.yaml"
+  HBO:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/HBO.yaml"
+  Microsoft:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Microsoft.yaml"
+  NetEaseMusic:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/NetEaseMusic.yaml"
+  Netflix:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Netflix.yaml"
+  OneDrive:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/OneDrive.yaml"
+  Porn:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Porn.yaml"
+  Scholar:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Scholar.yaml"
+  Sony:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Sony.yaml"
+  Spotify:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Spotify.yaml"
+  Steam:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Steam.yaml"
+  SteamCN:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/SteamCN.yaml"
+  Telegram:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Telegram.yaml"
+  Xbox:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Xbox.yaml"
+  YouTube:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/YouTube.yaml"
+  BanAD:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanAD.yaml"
+  BanEasyList:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanEasyList.yaml"
+  BanEasyListChina:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanEasyListChina.yaml"
+  BanEasyPrivacy:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanEasyPrivacy.yaml"
+  BanProgramAD:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanProgramAD.yaml"
+  ChinaCompanyIp:
+    <<: *ipcidr
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaCompanyIp.yaml"
+  ChinaDomain:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaDomain.yaml"
+  ChinaIp:
+    <<: *ipcidr
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaIp.yaml"
+  ChinaMedia:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaMedia.yaml"
+  Download:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Download.yaml"
+  LocalAreaNetwork:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/LocalAreaNetwork.yaml"
+  ProxyGFWlist:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyGFWlist.yaml"
+  ProxyMedia:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyMedia.yaml"
+  UnBan:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/UnBan.yaml"
 
-  cn_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"
-  google_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.yaml"
-  netflix_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.yaml"
-  twitter_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.yaml"
-  telegram_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.yaml"
   
   PikPak_classical:
     <<: *classical
@@ -272,5 +371,6 @@ rule-providers:
   oldfish_classical:
     <<: *classical
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/oldfish.yaml"
-
-
+  PikPakDownload_domain:
+    <<: *domain
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPakDownload.yaml"
