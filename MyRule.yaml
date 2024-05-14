@@ -110,6 +110,10 @@ proxy-groups:
   - {name: oldfish, <<: *prd}
   - {name: 国内, <<: *prd}
   - {name: 其他, <<: *pr}
+  - {name: Steam, <<: *prd}
+  - {name: Blizzard, <<: *prd}
+  - {name: Epic, <<: *prd}
+  - {name: Xbox, <<: *prd}
 
 
 
@@ -170,7 +174,11 @@ rules:
   - RULE-SET,pixiv_domain,Pixiv
   - RULE-SET,cn_domain,国内
 #自定义
-  - RULE-SET,SteamCN,DIRECT
+  - RULE-SET,Blizzard,Blizzard
+  - RULE-SET,Epic,Epic
+  - RULE-SET,Steam,Steam
+  - RULE-SET,SteamCN,Steam
+  - RULE-SET,Xbox,Xbox
 
   - RULE-SET,geolocation-!cn,其他
   - RULE-SET,google_ip,Google
@@ -251,9 +259,22 @@ rule-providers:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.yaml"
   
 #自定义
+  Blizzard:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Blizzard.yaml"
+  Epic:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Epic.yaml"
+  Steam:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Steam.yaml"
   SteamCN:
     <<: *classical
     url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/SteamCN.yaml"
+  Xbox:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Xbox.yaml"
+
 
   PikPak_classical:
     <<: *classical
