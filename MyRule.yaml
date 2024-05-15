@@ -63,25 +63,22 @@ dns:
   listen: :1053
   ipv6: true
   enhanced-mode: fake-ip
-  fake-ip-range: 28.0.0.1/8
   fake-ip-filter:
-    - '*'
-    - '+.lan'
-    - '+.local'
-  default-nameserver:
-    - 223.5.5.5
+    - "*"
+    - "+.lan"
+    - "+.local"
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
   proxy-server-nameserver:
     - https://doh.pub/dns-query
   nameserver-policy:
-    "rule-set:cn_domain,private":
+    "geosite:cn,private":
       - https://doh.pub/dns-query
       - https://dns.alidns.com/dns-query
-    "rule-set:geolocation-!cn":
-      - 'https://dns.cloudflare.com/dns-query#dns'
-      - 'https://dns.google/dns-query#dns'
+    "geosite:geolocation-!cn":
+      - "https://dns.cloudflare.com/dns-query#dns"
+      - "https://dns.google/dns-query#dns"
 proxies:
 - name: "直连"
   type: direct
