@@ -145,8 +145,6 @@ proxy-groups:
     - EDtunnel
 
 rules:
-  - GEOIP,lan,直连,no-resolve
-
   - RULE-SET,PikPakDownload_domain,PikPakDownload
   - RULE-SET,PikPak_classical,PikPak
   - RULE-SET,CloudflareTunnel_classical,CloudflareTunnel
@@ -157,6 +155,8 @@ rules:
   - RULE-SET,nhentai_classical,nhentai
   - RULE-SET,oldfish_classical,oldfish
 
+  - GEOIP,lan,直连,no-resolve
+  
   - RULE-SET,biliintl_domain,哔哩东南亚
   - RULE-SET,ehentai_domain,ehentai
   - RULE-SET,github_domain,Github
