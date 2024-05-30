@@ -20,7 +20,8 @@ proxy-providers:
   
   EDtunnel:
     <<: *p
-    url: "https://api.v1.mk/sub?target=clash&url=https%3A%2F%2Fnet.oldfish.site%2Fsub%2F9b569bcd-d0c5-4e06-acaa-ee8ac52cebb0%3Fformat%3Dclash&insert=false&emoji=true&list=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true"  
+    url: "https://url.v1.mk/sub?target=clash&url=trojan%3A%2F%2Foldfish%40www.visa.com.sg%3A8443%3Fsecurity%3Dtls%26type%3Dws%26host%3Dnet.oldfish233.xyz%26sni%3Dnet.oldfish233.xyz%26fp%3Drandom%26path%3D%252F%253Fed%253D2560%23net.oldfish233.xyz&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
+
 
 ipv6: true
 allow-lan: true
