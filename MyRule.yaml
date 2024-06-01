@@ -36,6 +36,12 @@ external-controller: 127.0.0.1:9090
 external-ui: ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
 
+geodata-mode: true
+geox-url:
+  geoip: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+  geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+
 find-process-mode: strict
 global-client-fingerprint: chrome
 
@@ -112,10 +118,10 @@ proxy-groups:
   - {name: oldfish, <<: *prd}
   - {name: 国内, <<: *prd}
   - {name: 其他, <<: *pr}
-  - {name: Steam, <<: *prd}
-  - {name: Blizzard, <<: *prd}
-  - {name: Epic, <<: *prd}
-  - {name: Xbox, <<: *prd}
+  # - {name: Steam, <<: *prd}
+  # - {name: Blizzard, <<: *prd}
+  # - {name: Epic, <<: *prd}
+  # - {name: Xbox, <<: *prd}
 
 
 
@@ -131,7 +137,7 @@ proxy-groups:
   - {name: 直连节点, type: select , include-all-providers: true, filter: "(?i)(水牛城)"}
   - {name: 直连节点负载均衡, type: load-balance ,strategy: round-robin , include-all-providers: true, filter: "(?i)(水牛城)"}
   - name: "低倍率专线"
-    type: fallback
+    type: select
     use:
     - ytoo
     - 花云
@@ -152,6 +158,7 @@ proxy-groups:
     - EDtunnel
 
 rules:
+#自己编写
   - RULE-SET,PikPakDownload_domain,PikPakDownload
   - RULE-SET,PikPak_classical,PikPak
   - RULE-SET,CloudflareTunnel_classical,CloudflareTunnel
@@ -161,35 +168,34 @@ rules:
   - RULE-SET,MyReject_classical,REJECT
   - RULE-SET,nhentai_classical,nhentai
   - RULE-SET,oldfish_classical,oldfish
+#自定义
+  # - RULE-SET,Blizzard,Blizzard
+  # - RULE-SET,Epic,Epic
+  # - RULE-SET,Steam,Steam
+  # - RULE-SET,SteamCN,Steam
+  # - RULE-SET,Xbox,Xbox
 
   - GEOIP,lan,直连,no-resolve
-  
-  - RULE-SET,biliintl_domain,哔哩东南亚
-  - RULE-SET,ehentai_domain,ehentai
-  - RULE-SET,github_domain,Github
-  - RULE-SET,twitter_domain,Twitter
-  - RULE-SET,youtube_domain,YouTube
-  - RULE-SET,google_domain,Google
-  - RULE-SET,telegram_domain,Telegram
-  - RULE-SET,netflix_domain,NETFLIX
-  - RULE-SET,bilibili_domain,哔哩哔哩
-  - RULE-SET,bahamut_domain,巴哈姆特
-  - RULE-SET,spotify_domain,Spotify
-  - RULE-SET,pixiv_domain,Pixiv
-  - RULE-SET,cn_domain,国内
-#自定义
-  - RULE-SET,Blizzard,Blizzard
-  - RULE-SET,Epic,Epic
-  - RULE-SET,Steam,Steam
-  - RULE-SET,SteamCN,Steam
-  - RULE-SET,Xbox,Xbox
+  - GEOSITE,biliintl,哔哩东南亚
+  - GEOSITE,ehentai,ehentai
+  - GEOSITE,github,Github
+  - GEOSITE,twitter,Twitter
+  - GEOSITE,youtube,YouTube
+  - GEOSITE,google,Google
+  - GEOSITE,telegram,Telegram
+  - GEOSITE,netflix,NETFLIX
+  - GEOSITE,bilibili,哔哩哔哩
+  - GEOSITE,bahamut,巴哈姆特
+  - GEOSITE,spotify,Spotify
+  - GEOSITE,pixiv,Pixiv
+  - GEOSITE,CN,国内
+  - GEOSITE,geolocation-!cn,其他
 
-  - RULE-SET,geolocation-!cn,其他
-  - RULE-SET,google_ip,Google
-  - RULE-SET,netflix_ip,NETFLIX
-  - RULE-SET,telegram_ip,Telegram
-  - RULE-SET,twitter_ip,Twitter
-  - RULE-SET,cn_ip,国内
+  - GEOIP,google,Google
+  - GEOIP,netflix,NETFLIX
+  - GEOIP,telegram,Telegram
+  - GEOIP,twitter,Twitter
+  - GEOIP,CN,国内
   - MATCH,其他
 
 rule-anchor:
@@ -197,89 +203,24 @@ rule-anchor:
   domain: &domain {type: http, interval: 86400, behavior: domain, format: yaml}
   classical: &classical {type: http, interval: 86400, behavior: classical, format: yaml}
 rule-providers:
-  private:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.yaml"
-  cn_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.yaml"
-  biliintl_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/biliintl.yaml"
-  ehentai_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.yaml"
-  github_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.yaml"
-  twitter_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.yaml"
-  youtube_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.yaml"
-  google_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.yaml"
-  telegram_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.yaml"
-  netflix_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.yaml"
-  bilibili_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bilibili.yaml"
-  bahamut_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bahamut.yaml"
-  spotify_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.yaml"
-  pixiv_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.yaml"
-  geolocation-!cn:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
   PikPakDownload_domain:
     <<: *domain
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPakDownload.yaml"
-
-  cn_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"
-  google_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.yaml"
-  netflix_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.yaml"
-  twitter_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.yaml"
-  telegram_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.yaml"
-  
-#自定义
-  Blizzard:
-    <<: *classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Blizzard.yaml"
-  Epic:
-    <<: *classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Epic.yaml"
-  Steam:
-    <<: *classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Steam.yaml"
-  SteamCN:
-    <<: *classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/SteamCN.yaml"
-  Xbox:
-    <<: *classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Xbox.yaml"
-
-
+  # Blizzard:
+  #   <<: *classical
+  #   url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Blizzard.yaml"
+  # Epic:
+  #   <<: *classical
+  #   url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Epic.yaml"
+  # Steam:
+  #   <<: *classical
+  #   url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Steam.yaml"
+  # SteamCN:
+  #   <<: *classical
+  #   url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/SteamCN.yaml"
+  # Xbox:
+  #   <<: *classical
+  #   url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Xbox.yaml"
   PikPak_classical:
     <<: *classical
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPak.yaml"
@@ -304,5 +245,3 @@ rule-providers:
   oldfish_classical:
     <<: *classical
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/oldfish.yaml"
-
-
