@@ -22,9 +22,9 @@ proxy-providers:
     <<: *p
     url: "https://api-huacloud.net/sub?target=clash&insert=true&emoji=true&udp=true&clash.doh=true&new_name=true&filename=Flower_SS&url=https%3A%2F%2Fapi.xmancdn.net%2Fosubscribe.php%3Fsid%3D117578%26token%3DnjV0wNcJ3GTG%26sip002%3D1"
   
-  白嫖机场:
+  nanoport:
     <<: *p
-    url: "https://api.xqc.best/api/v1/client/subscribe?token=0b1f15582e15fce792342809ab87326a"
+    url: "https://nano.nachoneko.cn/api/v1/client/subscribe?token=42287af5d183ab91168bc033e78604e0"
   
   EDtunnel:
     <<: *p
@@ -163,14 +163,14 @@ proxy-groups:
     type: select
     use:
     - 水牛城vps
-    - 白嫖机场
+    - nanoport
 
   - name: "直连节点负载均衡"
     type: load-balance
     strategy: round-robin
     use:
     - 水牛城vps
-    - 白嫖机场
+    - nanoport
 rules:
 #自己编写
   - RULE-SET,PikPakDownload_domain,PikPakDownload
