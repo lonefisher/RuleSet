@@ -245,3 +245,4 @@ rule-providers:
   oldfish_classical:
     <<: *classical
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/oldfish.yaml"
+
