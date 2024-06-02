@@ -171,9 +171,7 @@ proxy-groups:
     - 水牛城vps
     - nanoport
 rules:
-  - GEOIP,lan,直连,no-resolve
 #自己编写
-  - GEOSITE,category-ads-all,REJECT
   - RULE-SET,PikPakDownload_domain,PikPakDownload
   - RULE-SET,PikPak_classical,PikPak
   - RULE-SET,CloudflareTunnel_classical,CloudflareTunnel
@@ -184,6 +182,9 @@ rules:
   - RULE-SET,nhentai_classical,nhentai
   - RULE-SET,oldfish_classical,oldfish
   - RULE-SET,censorship_resistant_classical,CensorshipResistant
+#
+  - GEOIP,lan,直连,no-resolve
+  - GEOSITE,category-ads-all,REJECT
 #自定义添加GEODAT
   - GEOSITE,epicgames@cn,国内
   - GEOSITE,epicgames,Epic
