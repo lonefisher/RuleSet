@@ -173,23 +173,24 @@ proxy-groups:
 rules:
   - GEOIP,lan,直连,no-resolve
 #自己编写
+  - GEOSITE,category-ads-all,REJECT
   - RULE-SET,PikPakDownload_domain,PikPakDownload
   - RULE-SET,PikPak_classical,PikPak
   - RULE-SET,CloudflareTunnel_classical,CloudflareTunnel
   - RULE-SET,CloudflareWarp_classical,CloudflareWarp
   - RULE-SET,Iwara_classical,Iwara
-  - RULE-SET,MyDirect_classical,DIRECT
+  - RULE-SET,MyDirect_classical,国内
   - RULE-SET,MyReject_classical,REJECT
   - RULE-SET,nhentai_classical,nhentai
   - RULE-SET,oldfish_classical,oldfish
   - RULE-SET,censorship_resistant_classical,CensorshipResistant
 #自定义添加GEODAT
-  - GEOSITE,epicgames@cn,DIRECT
+  - GEOSITE,epicgames@cn,国内
   - GEOSITE,epicgames,Epic
   - GEOSITE,blizzard,Blizzard
-  - GEOSITE,steam@cn,DIRECT
+  - GEOSITE,steam@cn,国内
   - GEOSITE,steam,Steam
-  - GEOSITE,xbox@cn,DIRECT
+  - GEOSITE,xbox@cn,国内
   - GEOSITE,xbox,Xbox
 
 #自带
