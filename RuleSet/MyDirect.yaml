@@ -1,5 +1,4 @@
 payload:
   - DOMAIN-SUFFIX,parsec.app
-  - DOMAIN-SUFFIX,kubedown.com
   - DOMAIN-KEYWORD,plex.direct
-
+  - IP-CIDR,1.1.1.1/32
