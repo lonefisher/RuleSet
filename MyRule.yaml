@@ -122,10 +122,10 @@ proxy-groups:
   - {name: oldfish, <<: *prd}
   - {name: 国内, <<: *prd}
   - {name: 其他, <<: *pr}
-  # - {name: Steam, <<: *prd}
-  # - {name: Blizzard, <<: *prd}
-  # - {name: Epic, <<: *prd}
-  # - {name: Xbox, <<: *prd}
+  - {name: Steam, <<: *prd}
+  - {name: Blizzard, <<: *prd}
+  - {name: Epic, <<: *prd}
+  - {name: Xbox, <<: *prd}
 
 
 
@@ -182,12 +182,12 @@ rules:
   - RULE-SET,MyReject_classical,REJECT
   - RULE-SET,nhentai_classical,nhentai
   - RULE-SET,oldfish_classical,oldfish
-#自定义
-  # - RULE-SET,Blizzard,Blizzard
-  # - RULE-SET,Epic,Epic
-  # - RULE-SET,Steam,Steam
-  # - RULE-SET,SteamCN,Steam
-  # - RULE-SET,Xbox,Xbox
+#自定义添加
+  - RULE-SET,Blizzard,Blizzard
+  - RULE-SET,Epic,Epic
+  - GEOSITE,steam@cn,DIRECT
+  - GEOSITE,steam,Steam
+  - RULE-SET,Xbox,Xbox
 
   - GEOIP,lan,直连,no-resolve
   - GEOSITE,biliintl,哔哩东南亚
@@ -220,21 +220,23 @@ rule-providers:
   PikPakDownload_domain:
     <<: *domain
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPakDownload.yaml"
-  # Blizzard:
-  #   <<: *classical
-  #   url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Blizzard.yaml"
-  # Epic:
-  #   <<: *classical
-  #   url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Epic.yaml"
-  # Steam:
-  #   <<: *classical
-  #   url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Steam.yaml"
-  # SteamCN:
-  #   <<: *classical
-  #   url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/SteamCN.yaml"
-  # Xbox:
-  #   <<: *classical
-  #   url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Xbox.yaml"
+
+  Blizzard:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Blizzard.yaml"
+  Epic:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Epic.yaml"
+  Steam:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Steam.yaml"
+  SteamCN:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/SteamCN.yaml"
+  Xbox:
+    <<: *classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Xbox.yaml"
+
   PikPak_classical:
     <<: *classical
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPak.yaml"
