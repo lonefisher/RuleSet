@@ -222,32 +222,31 @@ rule-anchor:
 rule-providers:
   PikPakDownload_domain:
     <<: *domain
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPakDownload.yaml"
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/PikPakDownload.yaml"
   PikPak_classical:
     <<: *classical
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPak.yaml"
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/PikPak.yaml"
   CloudflareTunnel_classical:
     <<: *classical
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/CloudflareTunnel.yaml"
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/CloudflareTunnel.yaml"
   CloudflareWarp_classical:
     <<: *classical
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/CloudflareWarp.yaml"
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/CloudflareWarp.yaml"
   Iwara_classical:
     <<: *classical
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/Iwara.yaml"
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/Iwara.yaml"
   MyDirect_classical:
     <<: *classical
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/MyDirect.yaml"
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/MyDirect.yaml"
   MyReject_classical:
     <<: *classical
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/MyReject.yaml"
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/MyReject.yaml"
   nhentai_classical:
     <<: *classical
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/nhentai.yaml"
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/nhentai.yaml"
   oldfish_classical:
     <<: *classical
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/oldfish.yaml"
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/oldfish.yaml"
   censorship_resistant_classical:
     <<: *classical
-    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/CensorshipResistant.yaml"
-
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/CensorshipResistant.yaml"
