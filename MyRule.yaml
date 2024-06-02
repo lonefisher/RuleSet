@@ -126,8 +126,7 @@ proxy-groups:
   - {name: Blizzard, <<: *prd}
   - {name: Epic, <<: *prd}
   - {name: Xbox, <<: *prd}
-
-
+  - {name: CensorshipResistant, type: select, proxies: [默认,低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,EDtunnel负载均衡,自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点],include-all-providers: true}
 
 #分隔,下面是地区分组
   - {name: 香港, type: select , include-all-providers: true, filter: "(?i)港|hk|hongkong|hong kong"}
@@ -172,6 +171,7 @@ proxy-groups:
     - 水牛城vps
     - nanoport
 rules:
+  - GEOIP,lan,直连,no-resolve
 #自己编写
   - RULE-SET,PikPakDownload_domain,PikPakDownload
   - RULE-SET,PikPak_classical,PikPak
@@ -182,14 +182,17 @@ rules:
   - RULE-SET,MyReject_classical,REJECT
   - RULE-SET,nhentai_classical,nhentai
   - RULE-SET,oldfish_classical,oldfish
-#自定义添加
-  - RULE-SET,Blizzard,Blizzard
-  - RULE-SET,Epic,Epic
+  - RULE-SET,censorship_resistant_classical,CensorshipResistant
+#自定义添加GEODAT
+  - GEOSITE,epicgames@cn,DIRECT
+  - GEOSITE,epicgames,Epic
+  - GEOSITE,blizzard,Blizzard
   - GEOSITE,steam@cn,DIRECT
   - GEOSITE,steam,Steam
-  - RULE-SET,Xbox,Xbox
+  - GEOSITE,xbox@cn,DIRECT
+  - GEOSITE,xbox,Xbox
 
-  - GEOIP,lan,直连,no-resolve
+#自带
   - GEOSITE,biliintl,哔哩东南亚
   - GEOSITE,ehentai,ehentai
   - GEOSITE,github,Github
@@ -220,23 +223,6 @@ rule-providers:
   PikPakDownload_domain:
     <<: *domain
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPakDownload.yaml"
-
-  Blizzard:
-    <<: *classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Blizzard.yaml"
-  Epic:
-    <<: *classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Epic.yaml"
-  Steam:
-    <<: *classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Steam.yaml"
-  SteamCN:
-    <<: *classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/SteamCN.yaml"
-  Xbox:
-    <<: *classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Xbox.yaml"
-
   PikPak_classical:
     <<: *classical
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/PikPak.yaml"
@@ -261,4 +247,7 @@ rule-providers:
   oldfish_classical:
     <<: *classical
     url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/oldfish.yaml"
+  censorship_resistant_classical:
+    <<: *classical
+    url: "https://github.com/lonefisher/RuleSet/raw/Provider/RuleSet/CensorshipResistant.yaml"
 
