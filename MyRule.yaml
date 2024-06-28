@@ -139,7 +139,7 @@ proxy-groups:
   - {name: 全部节点, type: select , include-all-providers: true}
   - {name: 自动选择, type: url-test, include-all-providers: true, tolerance: 10}
   - name: "低倍率专线"
-    type: fallback
+    type: select
     use:
     - ytoo
     - 花云
