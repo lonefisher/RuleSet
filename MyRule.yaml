@@ -82,6 +82,7 @@ dns:
     - "*"
     - "+.lan"
     - "+.local"
+    - "+.oldfish233.xyz"
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
