@@ -90,7 +90,6 @@ dns:
     "geosite:geolocation-!cn":
       - "https://dns.cloudflare.com/dns-query#dns"
       - "https://dns.google/dns-query#dns"
-    "+.oldfish233.xyz": [223.5.5.5, https://dns.alidns.com/dns-query]
 proxies:
 - name: "直连"
   type: direct
