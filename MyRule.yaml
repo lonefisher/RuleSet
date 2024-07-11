@@ -84,13 +84,13 @@ dns:
   proxy-server-nameserver:
     - https://doh.pub/dns-query
   nameserver-policy:
-    "mt.oldfish233.xyz": "223.5.5.5"
     "geosite:cn,private":
       - https://doh.pub/dns-query
       - https://dns.alidns.com/dns-query
     "geosite:geolocation-!cn":
       - "https://dns.cloudflare.com/dns-query#dns"
       - "https://dns.google/dns-query#dns"
+    "+.oldfish233.xyz": [223.5.5.5, https://dns.alidns.com/dns-query]
 proxies:
 - name: "直连"
   type: direct
