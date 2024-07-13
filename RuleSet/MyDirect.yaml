@@ -1,4 +1,3 @@
 payload:
-  - DOMAIN-SUFFIX,parsec.app
   - DOMAIN-KEYWORD,plex.direct
   - IP-CIDR,1.1.1.1/32
