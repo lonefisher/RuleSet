@@ -86,7 +86,7 @@ dns:
   nameserver-policy:
     "geosite:bytedance":
       - 223.5.5.5
-      - 119.29.29.29
+      - 120.196.165.24
     "geosite:cn,private":
       - https://doh.pub/dns-query
       - https://dns.alidns.com/dns-query
