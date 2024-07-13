@@ -70,6 +70,7 @@ tun:
 
 dns:
   enable: true
+  prefer-h3: true
   listen: :1053
   ipv6: true
   enhanced-mode: fake-ip
@@ -81,15 +82,14 @@ dns:
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+    - https://dns.alidns.com/dns-query#h3=true
   proxy-server-nameserver:
     - https://doh.pub/dns-query
   nameserver-policy:
-    "geosite:bytedance":
-      - 223.5.5.5
-      - 120.196.165.24
     "geosite:cn,private":
       - https://doh.pub/dns-query
       - https://dns.alidns.com/dns-query
+      - https://dns.alidns.com/dns-query#h3=true
     "geosite:geolocation-!cn":
       - "https://dns.cloudflare.com/dns-query#dns"
       - "https://dns.google/dns-query#dns"
