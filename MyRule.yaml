@@ -80,16 +80,15 @@ dns:
     - "+.local"
     - "+.oldfish233.xyz"
   nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
     - https://dns.alidns.com/dns-query#h3=true
+    - https://doh.pub/dns-query
   proxy-server-nameserver:
     - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query#h3=true
   nameserver-policy:
     "geosite:cn,private":
-      - https://doh.pub/dns-query
-      - https://dns.alidns.com/dns-query
       - https://dns.alidns.com/dns-query#h3=true
+      - https://doh.pub/dns-query
     "geosite:geolocation-!cn":
       - "https://dns.cloudflare.com/dns-query#dns"
       - "https://dns.google/dns-query#dns"
