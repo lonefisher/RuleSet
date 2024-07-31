@@ -14,9 +14,9 @@ proxy-providers:
     <<: *p
     url: "https://apiurl.v1.mk/sub?target=clash&url=hysteria2%3A%2F%2Faf88adbf%40107.175.93.186%3A55393%2F%3Finsecure%3D1%26sni%3Dwww.bing.com%23ColoCrossing%E6%B0%B4%E7%89%9B%E5%9F%8E&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=true&tfo=false&expand=true&scv=true&fdn=false&new_name=true"
 
-  花云:
+  YTOO:
     <<: *p
-    url: "https://api-huacloud.net/sub?target=clash&insert=true&emoji=true&udp=true&clash.doh=true&new_name=true&filename=Flower_SS&url=https%3A%2F%2Fapi.xmancdn.net%2Fosubscribe.php%3Fsid%3D117578%26token%3DnjV0wNcJ3GTG%26sip002%3D1"
+    url: "https://api.stentvessel.top/sub?target=clash&new_name=true&emoji=true&clash.doh=true&filename=YToo_SS&udp=true&url=https%3A%2F%2Fapi.ytoo.xyz%2Fosubscribe.php%3Fsid%3D69347%26token%3DW75nwMof1K0w%26sip002%3D1"
   
   nanoport:
     <<: *p
@@ -140,14 +140,14 @@ proxy-groups:
   - name: "低倍率专线"
     type: select
     use:
-    - 花云
+    - YTOO
     filter: "(?i)(日用 专线|实验性)"
     
   - name: "低倍率专线负载均衡"
     type: load-balance
     strategy: round-robin
     use:
-    - 花云
+    - YTOO
     filter: "(?i)(日用 专线|实验性)"
 
   - name: "EDtunnel负载均衡"
