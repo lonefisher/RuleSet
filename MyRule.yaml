@@ -86,6 +86,9 @@ dns:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query#h3=true
   nameserver-policy:
+    "geosite:bytedance":
+      - 180.184.1.1
+      - 180.184.2.2
     "geosite:cn,private":
       - https://dns.alidns.com/dns-query#h3=true
       - https://doh.pub/dns-query
