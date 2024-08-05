@@ -60,12 +60,15 @@ sniffer:
       ports: [443, 8443]
   skip-domain:
     - "Mijia Cloud"
+    - "+.push.apple.com"
 tun:
   enable: true
   stack: mixed
   dns-hijack:
-    - 'any:53'
+    - "any:53"
+    - "tcp://any:53"
   auto-route: true
+  auto-redirect: true
   auto-detect-interface: true
 
 dns:
@@ -78,6 +81,7 @@ dns:
     - "*"
     - "+.lan"
     - "+.local"
+    - "+.market.xiaomi.com"
     - "+.oldfish233.xyz"
   nameserver:
     - https://dns.alidns.com/dns-query#h3=true
@@ -87,6 +91,10 @@ dns:
     - https://dns.alidns.com/dns-query#h3=true
   nameserver-policy:
     "geosite:bytedance":
+      - 120.196.165.24
+      - 202.96.134.133
+      - 58.22.96.66
+      - 223.5.5.5
       - 180.184.1.1
       - 180.184.2.2
     "geosite:cn,private":
