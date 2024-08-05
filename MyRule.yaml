@@ -90,7 +90,7 @@ dns:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query#h3=true
   nameserver-policy:
-    "geosite:bytedance":
+    "geosite:bytedance,bilibili":
       - 120.196.165.24
       - 202.96.134.133
       - 58.22.96.66
