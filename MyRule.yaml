@@ -94,13 +94,11 @@ dns:
     "geosite:bytedance,bilibili":
       - 120.196.165.24
       - 202.96.134.133
-      - 58.22.96.66
       - https://doh.pub/dns-query
       - https://dns.alidns.com/dns-query#h3=true
     "geosite:cn,private":
       - 120.196.165.24
       - 202.96.134.133
-      - 58.22.96.66
       - https://dns.alidns.com/dns-query#h3=true
       - https://doh.pub/dns-query
     "geosite:geolocation-!cn":
