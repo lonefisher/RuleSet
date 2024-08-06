@@ -118,7 +118,7 @@ proxies:
       port: 56666
       public-key: XTUAHZhQesN+QBqAvCS0653xKC5GTy0ptmeEp1y6NDk=
       allowed-ips: ['0.0.0.0/0']
-      # pre-shared-key: 31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=
+      pre-shared-key: Zton14h1PT+anOrydpgvRjNf7mTDKd+nMuuMBT/O1d0=
       # reserved: [209,98,59]  # 字符串格式也是合法的，如"U4An"
   udp: true
   # mtu: 1408
