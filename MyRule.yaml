@@ -108,6 +108,23 @@ proxies:
 - name: "直连"
   type: direct
   udp: true
+- name: "wg"
+  type: wireguard
+  ip: 192.168.20.2
+  # ipv6: fd01:5ca1:ab1e:80fa:ab85:6eea:213f:f4a5
+  private-key: uKzGSW5ew20ixamDKIRQAtlJAJVxQjgEz4m7CDKymGg=
+  peers:
+    - server: openwrt.oldfish233.xyz
+      port: 56666
+      public-key: XTUAHZhQesN+QBqAvCS0653xKC5GTy0ptmeEp1y6NDk=
+      allowed-ips: ['0.0.0.0/0']
+      # pre-shared-key: 31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=
+      # reserved: [209,98,59]  # 字符串格式也是合法的，如"U4An"
+  udp: true
+  # mtu: 1408
+  # dialer-proxy: "ss1"  # 一个出站代理的标识。当值不为空时，将使用指定的 proxy/proxy-group 发出连接
+  # remote-dns-resolve: true # 强制dns远程解析，默认值为false
+  # dns: [ 1.1.1.1, 8.8.8.8 ] # 仅在remote-dns-resolve为true时生效
 proxy-groups:
   - {name: 默认, type: select, proxies: [低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,EDtunnel负载均衡,自动选择, 直连, 香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点]}
   - {name: dns, type: select, proxies: [默认,低倍率专线,低倍率专线负载均衡,直连节点,直连节点负载均衡,EDtunnel负载均衡,自动选择, 默认,香港, 台湾, 日本, 新加坡, 美国, 其它地区, 全部节点]}
@@ -181,6 +198,13 @@ proxy-groups:
     use:
     - 水牛城vps
     - nanoport
+  
+  - name: "wireguard"
+    type: select
+    proxies:
+    - 直连
+    - wg
+
 rules:
 #自己编写
   - RULE-SET,PikPakDownload_domain,PikPakDownload
@@ -194,6 +218,7 @@ rules:
   - RULE-SET,oldfish_classical,oldfish
   - RULE-SET,censorship_resistant_classical,CensorshipResistant
   - RULE-SET,Speedtest_classical,Speedtest
+  - RULE-SET,wireguard_classical,wireguard
 #
   - GEOIP,lan,直连,no-resolve
   - GEOSITE,category-ads-all,REJECT
@@ -269,3 +294,6 @@ rule-providers:
   Speedtest_classical:
     <<: *classical
     url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/Speedtest.yaml"
+  wireguard_classical:
+    <<: *classical
+    url: "https://github.com/lonefisher/RuleSet/raw/main/RuleSet/wireguard.yaml"
